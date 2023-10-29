@@ -4,10 +4,12 @@ import Heading from "./components/Heading";
 import ClockContainer from "./components/ClockContainer";
 
 function App() {
+  const [timeLimit, setTimeLimit] = useState("");
+
   return (
     <div className="vh-100 bg-secondary-subtle">
-      <Heading />
-      <ClockContainer />
+      <Heading timeLimit={timeLimit} setTimeLimit={setTimeLimit} />
+      <ClockContainer timeLimit={timeLimit} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-const TimeControls = () => {
+const TimeControls = ({ timeLimit, setTimeLimit }) => {
   const timeControls = [
     { time: 1, increment: 0 },
     { time: 1, increment: 2 },
@@ -30,9 +30,13 @@ const TimeControls = () => {
         <div className="col">
           <div className="collapse multi-collapse" id="timeControls">
             <div className="">
-              {timeControls.map(({ time, increment }) => {
+              {timeControls.map(({ time, increment }, index) => {
                 return (
-                  <button>
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setTimeLimit(Number(time) * 60);
+                    }}>
                     {increment === 0 ? `${time} min` : `${time}|${increment}`}
                   </button>
                 );
