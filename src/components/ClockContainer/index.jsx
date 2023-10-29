@@ -1,11 +1,18 @@
 import React from "react";
 import Clock from "../Clock";
 
-const ClockContainer = ({ timeLimit }) => {
+const ClockContainer = ({
+  timeLimitP1,
+  movesP1,
+  setMovesP1,
+  timeLimitP2,
+  movesP2,
+  setMovesP2,
+}) => {
   return (
     <div className="p-5 my-5 bg-secondary-subtle text-white d-flex justify-content-around align-items-center">
-      <Clock timeLimit={timeLimit} />
-      <Clock timeLimit={timeLimit} />
+      <Clock timeLimit={timeLimitP1} moves={movesP1} setMoves={setMovesP1} />
+      <Clock timeLimit={timeLimitP2} moves={movesP2} setMoves={setMovesP2} />
     </div>
   );
 };

@@ -1,6 +1,13 @@
 import React from "react";
 
-const TimeControls = ({ timeLimit, setTimeLimit }) => {
+const TimeControls = ({
+  timeLimitP1,
+  setTimeLimitP1,
+  timeLimitP2,
+  setTimeLimitP2,
+  increment,
+  setIncrement,
+}) => {
   const timeControls = [
     { time: 1, increment: 0 },
     { time: 1, increment: 2 },
@@ -35,7 +42,9 @@ const TimeControls = ({ timeLimit, setTimeLimit }) => {
                   <button
                     key={index}
                     onClick={() => {
-                      setTimeLimit(Number(time) * 60);
+                      setTimeLimitP1(Number(time) * 60);
+                      setIncrement(increment);
+                      setTimeLimitP2(Number(time) * 60);
                     }}>
                     {increment === 0 ? `${time} min` : `${time}|${increment}`}
                   </button>
