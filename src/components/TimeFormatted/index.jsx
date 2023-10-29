@@ -1,5 +1,3 @@
-import React from "react";
-
 const TimeFormatted = ({ timeLimit }) => {
   const minutes = Math.floor(Number(timeLimit) / 60);
   const seconds = Number(timeLimit) % 60;

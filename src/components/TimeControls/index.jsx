@@ -7,6 +7,8 @@ const TimeControls = ({
   setTimeLimitP2,
   increment,
   setIncrement,
+  gameMode,
+  setGameMode,
 }) => {
   const timeControls = [
     { time: 1, increment: 0 },
@@ -45,6 +47,10 @@ const TimeControls = ({
                       setTimeLimitP1(Number(time) * 60);
                       setIncrement(increment);
                       setTimeLimitP2(Number(time) * 60);
+                      setGameMode(
+                        increment === 0 ? `${time} min` : `${time}|${increment}`
+                      );
+                      // ;
                     }}>
                     {increment === 0 ? `${time} min` : `${time}|${increment}`}
                   </button>

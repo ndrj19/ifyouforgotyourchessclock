@@ -8,6 +8,8 @@ const Heading = ({
   setTimeLimitP2,
   increment,
   setIncrement,
+  gameMode,
+  setGameMode,
 }) => {
   return (
     <div className="p-2 bg-secondary text-white d-flex flex-column justify-content-center align-items-center">
@@ -19,6 +21,8 @@ const Heading = ({
         setTimeLimitP2={setTimeLimitP2}
         increment={increment}
         setIncrement={setIncrement}
+        gameMode={gameMode}
+        setGameMode={setGameMode}
       />
     </div>
   );
