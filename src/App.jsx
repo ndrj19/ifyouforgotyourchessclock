@@ -13,11 +13,18 @@ function App() {
   const [gameMode, setGameMode] = useState("5 min");
   const [timeUpP1, setTimeUpP1] = useState(false);
   const [timeUpP2, setTimeUpP2] = useState(false);
+  const [updateTime, setUpdateTime] = useState(true);
+
+  useEffect(() => {
+    if (timeLimitP1 === 0 || timeLimitP2 === 0) {
+      setUpdateTime(false);
+    }
+  }, [timeLimitP1, timeLimitP2]);
 
   useEffect(() => {
     let interval;
 
-    if (turn === 1) {
+    if (turn === 1 && updateTime) {
       movesP1 > 0 ? setTimeLimitP1(timeLimitP1 + increment) : null;
       setMovesP1((prevMove) => prevMove + 1);
       interval = setInterval(() => {
@@ -25,7 +32,7 @@ function App() {
           return timeLeft > 0 ? timeLeft - 1 : 0;
         });
       }, 1000);
-    } else if (turn === 2) {
+    } else if (turn === 2 && updateTime) {
       movesP2 > 0 ? setTimeLimitP2(timeLimitP2 + increment) : null;
       setMovesP2((prevMove) => prevMove + 1);
       interval = setInterval(() => {
@@ -40,9 +47,9 @@ function App() {
     };
   }, [turn]);
 
-  useEffect(() => {
-    console.log("timeUpP1 changed:", timeUpP1);
-  }, [timeUpP1]);
+  // useEffect(() => {
+  //   console.log("timeUpP1 changed:", timeUpP1);
+  // }, [timeUpP1]);
 
   const switchTurn = (event) => {
     if (event.key === " " || event.keyCode === 32) {
@@ -56,7 +63,7 @@ function App() {
 
   return (
     <div
-      className="vh-100 bg-secondary-subtle"
+      className="vh-100 bg-secondary-subtle container"
       tabIndex="0"
       onKeyDown={switchTurn}>
       <Heading
@@ -68,6 +75,10 @@ function App() {
         setIncrement={setIncrement}
         gameMode={gameMode}
         setGameMode={setGameMode}
+        setTurn={setTurn}
+        setUpdateTime={setUpdateTime}
+        setMovesP1={setMovesP1}
+        setMovesP2={setMovesP2}
       />
       <ClockContainer
         timeLimitP1={timeLimitP1}

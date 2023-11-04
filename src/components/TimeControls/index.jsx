@@ -9,6 +9,10 @@ const TimeControls = ({
   setIncrement,
   gameMode,
   setGameMode,
+  setUpdateTime,
+  setTurn,
+  setMovesP1,
+  setMovesP2,
 }) => {
   const timeControls = [
     { time: 1, increment: 0 },
@@ -24,9 +28,9 @@ const TimeControls = ({
 
   return (
     <>
-      <p className="d-flex m-0">
+      <p className="d-flex m-0 col justify-content-center">
         <a
-          className="btn btn-primary"
+          className="btn btn-light dropdown-toggle"
           data-bs-toggle="collapse"
           href="#timeControls"
           role="button"
@@ -38,12 +42,17 @@ const TimeControls = ({
       <div className="row">
         <div className="col">
           <div className="collapse multi-collapse" id="timeControls">
-            <div className="">
+            <div className="d-flex gap-1 flex-wrap justify-content-center">
               {timeControls.map(({ time, increment }, index) => {
                 return (
                   <button
+                    className="btn btn-light"
                     key={index}
                     onClick={() => {
+                      setUpdateTime(true);
+                      setMovesP1(0);
+                      setMovesP2(0);
+                      setTurn(0);
                       setTimeLimitP1(Number(time) * 60);
                       setIncrement(increment);
                       setTimeLimitP2(Number(time) * 60);

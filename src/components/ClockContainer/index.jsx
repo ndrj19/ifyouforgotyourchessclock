@@ -16,7 +16,7 @@ const ClockContainer = ({
   setTimeUpP2,
 }) => {
   return (
-    <div className="p-5 my-5 bg-secondary-subtle text-white d-flex flex-wrap justify-content-around align-items-center">
+    <div className="col p-5 my-5 gap-2 bg-secondary-subtle text-white d-flex flex-wrap justify-content-around align-items-center">
       <Clock
         timeLimit={timeLimitP1}
         moves={movesP1}
