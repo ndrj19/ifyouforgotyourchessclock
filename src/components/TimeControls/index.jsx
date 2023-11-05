@@ -20,15 +20,19 @@ const TimeControls = ({
     { time: 3, increment: 0 },
     { time: 3, increment: 2 },
     { time: 5, increment: 0 },
+    { time: 5, increment: 2 },
     { time: 5, increment: 5 },
+    { time: 7.5, increment: 10 },
     { time: 10, increment: 0 },
+    { time: 10, increment: 10 },
     { time: 15, increment: 10 },
-    { time: 30, increment: 0 },
+    { time: 15, increment: 0 },
+    { time: 30, increment: 10 },
   ];
 
   return (
     <>
-      <p className="d-flex m-0 col justify-content-center">
+      <p /*className="d-flex m-0 col justify-content-center"*/>
         <a
           className="btn btn-light dropdown-toggle"
           data-bs-toggle="collapse"
@@ -39,8 +43,8 @@ const TimeControls = ({
           TimeControls
         </a>
       </p>
-      <div className="row">
-        <div className="col">
+      <div className="col">
+        <div /*className="col"*/>
           <div className="collapse multi-collapse" id="timeControls">
             <div className="d-flex gap-1 flex-wrap justify-content-center">
               {timeControls.map(({ time, increment }, index) => {

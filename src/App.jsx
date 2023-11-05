@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Heading from "./components/Heading";
 import ClockContainer from "./components/ClockContainer";
+import HowToModal from "./components/HowToModal";
 
 function App() {
-  let [timeLimitP1, setTimeLimitP1] = useState(3);
-  let [timeLimitP2, setTimeLimitP2] = useState(3);
+  let [timeLimitP1, setTimeLimitP1] = useState(300);
+  let [timeLimitP2, setTimeLimitP2] = useState(300);
   const [increment, setIncrement] = useState(0);
   let [movesP1, setMovesP1] = useState(0);
   let [movesP2, setMovesP2] = useState(0);
@@ -60,12 +61,21 @@ function App() {
       }
     }
   };
+  const switchTurnClick = (event) => {
+    if (turn === 0) {
+      setTurn(1);
+    } else {
+      setTurn((prevTurn) => (prevTurn === 1 ? 2 : 1));
+    }
+  };
 
   return (
     <div
       className="vh-100 bg-secondary-subtle container"
       tabIndex="0"
-      onKeyDown={switchTurn}>
+      onKeyDown={switchTurn}
+      // onClick={switchTurnClick}
+    >
       <Heading
         timeLimitP1={timeLimitP1}
         setTimeLimitP1={setTimeLimitP1}
@@ -93,7 +103,9 @@ function App() {
         setTimeUpP1={setTimeUpP1}
         timeUpP2={timeUpP2}
         setTimeUpP2={setTimeUpP2}
+        switchTurnClick={switchTurnClick}
       />
+      <HowToModal />
     </div>
   );
 }

@@ -10,12 +10,14 @@ const Clock = ({
   setGameMode,
   timeUp,
   setTimeUp,
+  switchTurnClick,
 }) => {
   return (
     <div
       className={`d-flex flex-column align-items-center p-5 border border-dark rounded border-3 ${
         timeUp ? "bg-warning" : "bg-secondary"
-      }`}>
+      }`}
+      onClick={switchTurnClick}>
       <TimeFormatted timeLimit={timeLimit} />
       <Moves moves={moves} setMoves={setMoves} />
       <GameMode gameMode={gameMode} setGameMode={setGameMode} />

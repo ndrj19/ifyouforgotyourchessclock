@@ -14,9 +14,10 @@ const ClockContainer = ({
   setTimeUpP1,
   timeUpP2,
   setTimeUpP2,
+  switchTurnClick,
 }) => {
   return (
-    <div className="col p-5 my-5 gap-2 bg-secondary-subtle text-white d-flex flex-wrap justify-content-around align-items-center">
+    <div className="col p-5 mb-5 gap-2 bg-secondary-subtle text-white d-flex flex-wrap justify-content-around align-items-center">
       <Clock
         timeLimit={timeLimitP1}
         moves={movesP1}
@@ -25,6 +26,7 @@ const ClockContainer = ({
         setGameMode={setGameMode}
         timeUp={timeUpP1}
         setTimeUp={setTimeUpP1}
+        switchTurnClick={switchTurnClick}
       />
       <Clock
         timeLimit={timeLimitP2}
@@ -34,6 +36,7 @@ const ClockContainer = ({
         setGameMode={setGameMode}
         timeUp={timeUpP2}
         setTimeUp={setTimeUpP2}
+        switchTurnClick={switchTurnClick}
       />
     </div>
   );

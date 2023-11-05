@@ -16,10 +16,12 @@ const Heading = ({
   setMovesP2,
 }) => {
   return (
-    <div className="row p-2 bg-secondary text-white d-flex flex-column justify-content-center align-items-center gap-2">
-      <h1 className="col m-0 fs-1 text-center iyfycc">
+    <div className="col p-2 bg-secondary text-white d-flex flex-column justify-content-center align-items-center gap-2 border border-dark rounded-bottom border-3 border-top-0">
+      <p className="col m-0 text-center iyfycc">
+        <i className="fa-solid fa-chess-knight"></i>
         ifyouforgotyourchessclock.com
-      </h1>
+        <i className="fa-solid fa-chess-knight fa-flip-horizontal"></i>
+      </p>
       <TimeControls
         timeLimitP1={timeLimitP1}
         setTimeLimitP1={setTimeLimitP1}
