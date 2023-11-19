@@ -17,7 +17,7 @@ const ClockContainer = ({
   switchTurnClick,
 }) => {
   return (
-    <div className="col p-5 mb-5 gap-2 bg-secondary-subtle text-white d-flex flex-wrap justify-content-around align-items-center">
+    <div className="col p-5 gap-2 bg-secondary-subtle text-white d-flex flex-wrap justify-content-around align-items-center">
       <Clock
         timeLimit={timeLimitP1}
         moves={movesP1}
@@ -27,6 +27,7 @@ const ClockContainer = ({
         timeUp={timeUpP1}
         setTimeUp={setTimeUpP1}
         switchTurnClick={switchTurnClick}
+        player={1}
       />
       <Clock
         timeLimit={timeLimitP2}
@@ -37,6 +38,7 @@ const ClockContainer = ({
         timeUp={timeUpP2}
         setTimeUp={setTimeUpP2}
         switchTurnClick={switchTurnClick}
+        player={2}
       />
     </div>
   );

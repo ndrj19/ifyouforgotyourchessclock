@@ -19,7 +19,7 @@ const Heading = ({
     <div className="col p-2 bg-secondary text-white d-flex flex-column justify-content-center align-items-center gap-2 border border-dark rounded-bottom border-3 border-top-0">
       <p className="col m-0 text-center iyfycc">
         <i className="fa-solid fa-chess-knight"></i>
-        ifyouforgotyourchessclock.com
+        ifyouforgotyourchessclock
         <i className="fa-solid fa-chess-knight fa-flip-horizontal"></i>
       </p>
       <TimeControls

@@ -15,6 +15,7 @@ function App() {
   const [timeUpP1, setTimeUpP1] = useState(false);
   const [timeUpP2, setTimeUpP2] = useState(false);
   const [updateTime, setUpdateTime] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (timeLimitP1 === 0 || timeLimitP2 === 0) {
@@ -25,7 +26,8 @@ function App() {
   useEffect(() => {
     let interval;
 
-    if (turn === 1 && updateTime) {
+    if (turn === 11) {
+    } else if (turn === 1 && updateTime && !isPaused) {
       movesP1 > 0 ? setTimeLimitP1(timeLimitP1 + increment) : null;
       setMovesP1((prevMove) => prevMove + 1);
       interval = setInterval(() => {
@@ -33,9 +35,23 @@ function App() {
           return timeLeft > 0 ? timeLeft - 1 : 0;
         });
       }, 1000);
-    } else if (turn === 2 && updateTime) {
+    } else if (turn === 2 && updateTime && !isPaused) {
       movesP2 > 0 ? setTimeLimitP2(timeLimitP2 + increment) : null;
       setMovesP2((prevMove) => prevMove + 1);
+      interval = setInterval(() => {
+        setTimeLimitP2((timeLeft) => {
+          return timeLeft > 0 ? timeLeft - 1 : 0;
+        });
+      }, 1000);
+    } else if (turn === 1 && updateTime && isPaused) {
+      setIsPaused(false);
+      interval = setInterval(() => {
+        setTimeLimitP1((timeLeft) => {
+          return timeLeft > 0 ? timeLeft - 1 : 0;
+        });
+      }, 1000);
+    } else if (turn === 2 && updateTime && isPaused) {
+      setIsPaused(false);
       interval = setInterval(() => {
         setTimeLimitP2((timeLeft) => {
           return timeLeft > 0 ? timeLeft - 1 : 0;
@@ -47,10 +63,6 @@ function App() {
       clearInterval(interval);
     };
   }, [turn]);
-
-  // useEffect(() => {
-  //   console.log("timeUpP1 changed:", timeUpP1);
-  // }, [timeUpP1]);
 
   const switchTurn = (event) => {
     if (event.key === " " || event.keyCode === 32) {
@@ -69,6 +81,21 @@ function App() {
     }
   };
 
+  const pause = (event) => {
+    if (turn === 1) {
+      setTurn(11);
+      setIsPaused(true);
+    } else if (turn === 11) {
+      setTurn(1);
+      // setIsPaused(false);
+    } else if (turn === 2) {
+      setTurn(22);
+      setIsPaused(true);
+    } else if (turn === 22) {
+      setTurn(2);
+      // setIsPaused(false);
+    }
+  };
   return (
     <div
       className="vh-100 bg-secondary-subtle container"
@@ -105,7 +132,17 @@ function App() {
         setTimeUpP2={setTimeUpP2}
         switchTurnClick={switchTurnClick}
       />
-      <HowToModal />
+      <div className="d-flex flex-column align-items-center gap-4">
+        <button
+          className="btn btn-sm btn-secondary border border-dark rounded border-3"
+          onClick={pause}>
+          <i
+            className={`fa-solid ${
+              isPaused ? "fa-circle-play" : "fa-circle-pause"
+            }`}></i>
+        </button>
+        <HowToModal />
+      </div>
     </div>
   );
 }
